@@ -1,0 +1,217 @@
+<head>
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <!-- <link rel = "stylesheet" type = "text/css" href = "main.css"> -->
+    <!-- <script src="main.js"></script> -->
+</head>
+
+<body style="background-color:midnightblue; color: white">
+    <p id="GameState" style="font-size: 200%"><span style="color: yellow;">Playing...</span></p>
+    <p id="Score" style="font-size: 200%">Score: 0</p>
+    <p id="CurrentNumber" style="font-size: 200%">Current Number: -</p>
+    
+    <script>
+
+    let LastChangedNumberID = -1;
+    let x = "-";
+    const numbers = [];
+    numbers[1] = 0;
+    numbers[2] = 0;
+    numbers[3] = 0;
+    numbers[4] = 0;
+    numbers[5] = 0;
+    numbers[6] = 0;
+    numbers[7] = 0;
+    numbers[8] = 0;
+    numbers[9] = 0;
+    numbers[10] = 0;
+    numbers[11] = 0;
+    numbers[12] = 0;
+    numbers[13] = 0;
+    numbers[14] = 0;
+    numbers[15] = 0;
+    numbers[16] = 0;
+    numbers[17] = 0;
+    numbers[18] = 0;
+    numbers[19] = 0;
+    numbers[20] = 0;
+
+    var Score = 0;
+    var State = true;
+
+    function RNG()
+    {
+        if(State)
+        {
+            x = Math.round(Math.random() * 999) + 1;
+            document.getElementById("CurrentNumber").innerHTML = "Current Number: " + x;
+        }
+    }
+
+    function SelectOrder(Order)
+    {
+        if(State)
+        {
+            if(document.getElementById(Order).innerHTML == "-")
+            {
+                LastChangedNumberID = Order;
+
+                numbers[Number(Order)] = x
+                document.getElementById(Order).innerHTML = x;
+
+                CheckNumberOrder();
+                RNG();
+            }
+        }
+    }
+
+    function CheckNumberOrder()
+    {
+        var LastNumber = -1;
+
+        Score = 0;
+
+        for(number in numbers)
+        {
+            if(numbers[number] != 0)
+            {
+                if(LastNumber < numbers[number])
+                {
+                    Score = Score + 1;
+                    LastNumber = numbers[number];
+
+                    document.getElementById("Score").innerHTML = "Score: " + Score;
+                }
+                else
+                {
+                    LastNumber = numbers[number];
+                    State = false;
+
+                    document.getElementById("Score").innerHTML = "Score: " + Score;
+                    document.getElementById("GameState").innerHTML = "<span style=\"color: Red;\">Game has ended</span>";
+
+                    document.getElementById(LastChangedNumberID).innerHTML = "<span style=\"color: Red;\">" + numbers[LastChangedNumberID] +"</span>";
+                }
+
+                if(Score >= 20)
+                {
+                    State = false;
+
+                    document.getElementById("Score").innerHTML = "Score: " + Score;
+                    document.getElementById("GameState").innerHTML = "<span style=\"color: Green;\">Game has WON</span>";
+                }
+            }
+        }
+    }
+
+    RNG();
+    </script>
+    
+    <table>
+    <tr>
+        <th>Order</th>
+        <th>No</th>
+        <th>Select</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td id = "1">-</td>
+        <td><button onclick = "SelectOrder(1)">Select</button></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td id = "2">-</td>
+        <td><button onclick = "SelectOrder(2)">Select</button></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td id = "3">-</td>
+        <td><button onclick = "SelectOrder(3)">Select</button></td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td id = "4">-</td>
+        <td><button onclick = "SelectOrder(4)">Select</button></td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td id = "5">-</td>
+        <td><button onclick = "SelectOrder(5)">Select</button></td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td id = "6">-</td>
+        <td><button onclick = "SelectOrder(6)">Select</button></td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td id = "7">-</td>
+        <td><button onclick = "SelectOrder(7)">Select</button></td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td id = "8">-</td>
+        <td><button onclick = "SelectOrder(8)">Select</button></td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td id = "9">-</td>
+        <td><button onclick = "SelectOrder(9)">Select</button></td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td id = "10">-</td>
+        <td><button onclick = "SelectOrder(10)">Select</button></td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td id = "11">-</td>
+        <td><button onclick = "SelectOrder(11)">Select</button></td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td id = "12">-</td>
+        <td><button onclick = "SelectOrder(12)">Select</button></td>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td id = "13">-</td>
+        <td><button onclick = "SelectOrder(13)">Select</button></td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td id = "14">-</td>
+        <td><button onclick = "SelectOrder(14)">Select</button></td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td id = "15">-</td>
+        <td><button onclick = "SelectOrder(15)">Select</button></td>
+    </tr>
+    <tr>
+        <td>16</td>
+        <td id = "16">-</td>
+        <td><button onclick = "SelectOrder(16)">Select</button></td>
+    </tr>
+    <tr>
+        <td>17</td>
+        <td id = "17">-</td>
+        <td><button onclick = "SelectOrder(17)">Select</button></td>
+    </tr>
+    <tr>
+        <td>18</td>
+        <td id = "18">-</td>
+        <td><button onclick = "SelectOrder(18)">Select</button></td>
+    </tr>
+    <tr>
+        <td>19</td>
+        <td id = "19">-</td>
+        <td><button onclick = "SelectOrder(19)">Select</button></td>
+    </tr>
+    <tr>
+        <td>20</td>
+        <td id = "20">-</td>
+        <td><button onclick = "SelectOrder(20)">Select</button></td>
+    </tr>
+    </table>
+    
+</body>
