@@ -145,7 +145,7 @@ void Lost()
     GameLost++;
     ResetGame();
     GameCount++;
-    Console.WriteLine(GameCount);
+    WriteToConsole(GameCount + "");
 }
 
 void Won()
@@ -153,11 +153,11 @@ void Won()
     GameWon++;
     ResetGame();
     GameCount++;
-    Console.WriteLine(GameCount);
+    WriteToConsole(GameCount + "");
 }
 
 void WriteToConsole(string input)
 {
-    //Console.WriteLine(input);
+    Console.WriteLine(input);
     sw.WriteLine(input);
 }
